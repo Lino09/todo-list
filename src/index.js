@@ -8,9 +8,9 @@ const list = [
   { description: 'Learn something new', isCompleted: false, index: 2 },
 ];
 
-function checkAddress(checkbox){
-  // console.log(checkbox.checked);
-}
+// function checkAddress(checkbox){
+// console.log(checkbox.checked);
+// }
 
 function listIt() {
   let listContent = '';
@@ -23,6 +23,6 @@ function listIt() {
 }
 
 listIt();
-document.querySelectorAll('.task-check').forEach((el) => {
-  el.addEventListener('click', ()=> checkAddress(el))
-});
+// document.querySelectorAll('.task-check').forEach((el) => {
+//   el.addEventListener('click', () => checkAddress(el));
+// });

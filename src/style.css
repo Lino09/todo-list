@@ -50,7 +50,7 @@ button {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-columns: repeat(auto-fit, auto);
+  grid-template-columns: repeat(auto-fit, auto); /* stylelint-disable-line */
   background-color: whitesmoke;
   row-gap: 2px;
   box-shadow: 1px 1px 8px gray;
