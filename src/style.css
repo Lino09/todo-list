@@ -16,7 +16,7 @@ h1 {
 
 p {
   margin: 0;
-  padding:  8px 12px;
+  padding: 8px 12px;
   font-weight: 600;
 }
 
@@ -50,7 +50,7 @@ button {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-columns: repeat(auto-fill, auto);
+  grid-template-columns: repeat(auto-fit, auto);
   background-color: whitesmoke;
   row-gap: 2px;
   box-shadow: 1px 1px 8px gray;
