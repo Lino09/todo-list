@@ -1,28 +1,58 @@
-// import _ from 'lodash';
-
+import * as task from './functions.js';
 import './style.css';
 
-const list = [
+let list = [
   { description: 'Wash the dishes', isCompleted: false, index: 0 },
   { description: 'Write code', isCompleted: false, index: 1 },
   { description: 'Learn something new', isCompleted: false, index: 2 },
 ];
 
-// function checkAddress(checkbox){
-// console.log(checkbox.checked);
-// }
-
 function listIt() {
-  let listContent = '';
+  if (window.localStorage.getItem('todos')) {
+    const todos = window.localStorage.getItem('todos');
+    list = JSON.parse(todos);
+  }
+  document.querySelector('.list').innerHTML = '';
   list.forEach((item) => {
-    listContent += `<li class="task"><input class="task-check" type="checkbox"><span>${item.description}</span><svg xmlns="http://www.w3.org/2000/svg" class="drag icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-  </svg></li>`;
+    const taskElement = document.createElement('li');
+    taskElement.classList.add('task');
+    if (item.isCompleted) {
+      taskElement.classList.add('completed');
+    }
+    const checker = document.createElement('input');
+    checker.type = 'checkbox';
+    checker.classList.add('task-check');
+    checker.addEventListener('click', () => {
+      task.toggle(item, list);
+      listIt();
+    });
+    checker.checked = item.isCompleted;
+    taskElement.appendChild(checker);
+    const taskText = document.createElement('input');
+    taskText.classList = 'task-text';
+    taskText.value = item.description;
+    taskText.addEventListener('change', () => {
+      if (taskText.value.length > 0) {
+        item.description = taskText.value;
+        task.saveLocal(list);
+      }
+    });
+    taskElement.appendChild(taskText);
+    const dragIcon = document.createElement('i');
+    dragIcon.classList = 'fas fa-ellipsis-v drag icon';
+    taskElement.appendChild(dragIcon);
+    taskElement.draggable = 'true';
+    document.querySelector('.list').appendChild(taskElement);
   });
-  document.querySelector('.list').innerHTML = listContent;
 }
 
 listIt();
-// document.querySelectorAll('.task-check').forEach((el) => {
-//   el.addEventListener('click', () => checkAddress(el));
-// });
+document.querySelector('#taskForm').addEventListener('submit', (event) => {
+  event.preventDefault();
+  task.add(list);
+  listIt();
+});
+document.querySelector('.clearer').addEventListener('click', () => {
+  task.removeDone(list);
+  listIt();
+});
