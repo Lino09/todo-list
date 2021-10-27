@@ -1,9 +1,13 @@
-export function toggle(el,list) { 
-  list.forEach((task)=> {
-    if(task === el){
-      task.isCompleted = !task.isCompleted
+export function saveLocal(list) {
+  window.localStorage.setItem('todos',JSON.stringify(list))
+}
+
+export function toggle(el, list) {
+  list.forEach((task) => {
+    if (task === el) {
+      task.isCompleted = !task.isCompleted;
     }
-  })
+  });
   saveLocal(list)
 }
 
@@ -11,10 +15,6 @@ export function add(list) {
   list.push({description:document.querySelector('#newTask').value, isCompleted: false, index: list.length});
   document.querySelector('#newTask').value = '';
   saveLocal(list)
-}
-
-export function saveLocal(list) {
-window.localStorage.setItem('todos',JSON.stringify(list))
 }
 
 export function updateIndex(list) {
