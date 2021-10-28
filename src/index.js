@@ -1,15 +1,14 @@
 import * as task from './functions.js';
-import { addEvents } from './dragNDrop.js';
+import addEvents from './dragNDrop.js'; // eslint-disable-line
 import './style.css';
 
-
 let list = [
-  { description: 'Wash the dishes', isCompleted: false, index: 0 },
-  { description: 'Write code', isCompleted: false, index: 1 },
-  { description: 'Learn something new', isCompleted: false, index: 2 },
+  { description: 'Add Your tasks', isCompleted: false, index: 0 },
+  { description: 'Edit a Task', isCompleted: false, index: 1 },
+  { description: 'Drag to reorder', isCompleted: false, index: 2 },
 ];
 
-export function listIt() {
+function listIt() {
   if (window.localStorage.getItem('todos')) {
     const todos = window.localStorage.getItem('todos');
     list = JSON.parse(todos);
@@ -59,3 +58,5 @@ document.querySelector('.clearer').addEventListener('click', () => {
   task.removeDone(list);
   listIt();
 });
+
+export default listIt;

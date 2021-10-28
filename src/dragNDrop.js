@@ -1,29 +1,29 @@
 import * as task from './functions.js';
-import {listIt} from './index.js';
+import listIt from './index.js'; // eslint-disable-line
 
 let dragStartIndex;
 
-function swapItems(startIndex, endIndex,list) {
- const itemOne = list[startIndex];
- const itemTwo = list[endIndex];
- list[startIndex] = itemTwo;
- list[endIndex] = itemOne;
- task.saveLocal(list);
- listIt();
+function swapItems(startIndex, endIndex, list) {
+  const itemOne = list[startIndex];
+  const itemTwo = list[endIndex];
+  list[startIndex] = itemTwo;
+  list[endIndex] = itemOne;
+  task.saveLocal(list);
+  listIt();
 }
 
 function dragStart(i) {
- dragStartIndex = i;
+  dragStartIndex = i;
 }
 
-function dragOver() {
-  event.preventDefault();
+function dragOver(e) {
+  e.preventDefault();
 }
 
 function drop(draggable, index, list) {
   const dragEndIndex = index;
   swapItems(dragStartIndex, dragEndIndex, list);
-   draggable.classList.remove('over');
+  draggable.classList.remove('over');
 }
 
 function dragEnter() {
@@ -34,17 +34,18 @@ function dragLeave() {
   this.classList.remove('over');
 }
 
-export function addEvents(list) {
+function addEvents(list) {
   const draggables = document.querySelectorAll('.draggable');
-  draggables.forEach( (draggable, index) => {
+  draggables.forEach((draggable, index) => {
     draggable.addEventListener('dragstart', () => {
       dragStart(index);
     });
     draggable.addEventListener('dragover', dragOver);
-    draggable.addEventListener('drop', () =>{
-      drop(draggable,index,list);
+    draggable.addEventListener('drop', () => {
+      drop(draggable, index, list);
     });
     draggable.addEventListener('dragenter', dragEnter);
     draggable.addEventListener('dragleave', dragLeave);
-  })
+  });
 }
+export default addEvents;
