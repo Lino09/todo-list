@@ -1,10 +1,11 @@
 import * as task from './functions.js';
+import addEvents from './dragNDrop.js'; // eslint-disable-line
 import './style.css';
 
 let list = [
-  { description: 'Wash the dishes', isCompleted: false, index: 0 },
-  { description: 'Write code', isCompleted: false, index: 1 },
-  { description: 'Learn something new', isCompleted: false, index: 2 },
+  { description: 'Add Your tasks', isCompleted: false, index: 0 },
+  { description: 'Edit a Task', isCompleted: false, index: 1 },
+  { description: 'Drag to reorder', isCompleted: false, index: 2 },
 ];
 
 function listIt() {
@@ -15,7 +16,7 @@ function listIt() {
   document.querySelector('.list').innerHTML = '';
   list.forEach((item) => {
     const taskElement = document.createElement('li');
-    taskElement.classList.add('task');
+    taskElement.classList.add('task', 'draggable');
     if (item.isCompleted) {
       taskElement.classList.add('completed');
     }
@@ -44,6 +45,7 @@ function listIt() {
     taskElement.draggable = 'true';
     document.querySelector('.list').appendChild(taskElement);
   });
+  addEvents(list);
 }
 
 listIt();
@@ -56,3 +58,5 @@ document.querySelector('.clearer').addEventListener('click', () => {
   task.removeDone(list);
   listIt();
 });
+
+export default listIt;

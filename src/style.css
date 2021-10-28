@@ -101,6 +101,7 @@ button {
   border: none;
   box-sizing: border-box;
   width: 100%;
+  background-color: transparent;
 }
 
 .task-text:focus {
@@ -127,4 +128,8 @@ button {
 
 .completed {
   text-decoration: line-through;
+}
+
+.over {
+  background-color: rgb(241, 241, 241);
 }
