@@ -18,14 +18,14 @@ function listIt() {
       taskElement.classList.add('completed');
     }
     const delBtn = document.createElement('button');
-    const delIcon = document.createElement('i')
-    delIcon.classList = 'far fa-trash-alt icon del'
-    delBtn.appendChild(delIcon)
-    delBtn.classList.add('del-container')
+    const delIcon = document.createElement('i');
+    delIcon.classList = 'far fa-trash-alt icon del';
+    delBtn.appendChild(delIcon);
+    delBtn.classList.add('del-container');
     delBtn.addEventListener('click', () => {
       task.removeThis(item, list);
       listIt();
-    })
+    });
     const checker = document.createElement('input');
     checker.type = 'checkbox';
     checker.classList.add('task-check');

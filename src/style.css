@@ -34,10 +34,6 @@ button {
   text-decoration: underline;
 }
 
-.icon {
- 
-}
-
 .drag {
   margin-left: 8px;
   cursor: grab;
@@ -151,13 +147,14 @@ button {
   padding: 8px 12px;
   background-color: rgb(255, 174, 174);
   border-radius: 3px;
-  display:none;
+  display: none;
 }
 
 .del-container:hover {
   background-color: rgb(250, 70, 70);
   display: block;
 }
+
 .task:hover .del-container {
   display: block;
 }

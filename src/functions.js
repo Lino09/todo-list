@@ -31,8 +31,8 @@ export function removeDone(list) {
   saveLocal(list);
 }
 
-export function removeThis(task, list){
-  list = list.filter((el) => el !== task)
+export function removeThis(task, list) {
+  list = list.filter((el) => el !== task);
   updateIndex(list);
   saveLocal(list);
 }
