@@ -26,12 +26,12 @@ button {
 }
 
 .clearer {
-  padding: 8px;
+  padding: 16px;
   cursor: pointer;
 }
 
-.icon {
-  width: 16px;
+.clearer:hover {
+  text-decoration: underline;
 }
 
 .drag {
@@ -77,15 +77,16 @@ button {
   background-color: white;
   display: flex;
   padding: 16px 16px;
+  position: relative;
 }
 
 .input-task {
   background-color: white;
   padding: 16px 12px;
-  border: none;
   box-sizing: border-box;
   width: 80%;
   margin: 0;
+  border: 2px solid transparent;
 }
 
 .input-task:focus {
@@ -132,4 +133,28 @@ button {
 
 .over {
   background-color: rgb(241, 241, 241);
+}
+
+.del {
+  font-size: 16px;
+  color: white;
+}
+
+.del-container {
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  padding: 8px 12px;
+  background-color: rgb(255, 174, 174);
+  border-radius: 3px;
+  display: none;
+}
+
+.del-container:hover {
+  background-color: rgb(250, 70, 70);
+  display: block;
+}
+
+.task:hover .del-container {
+  display: block;
 }

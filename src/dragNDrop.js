@@ -24,6 +24,7 @@ function drop(draggable, index, list) {
   const dragEndIndex = index;
   swapItems(dragStartIndex, dragEndIndex, list);
   draggable.classList.remove('over');
+  task.updateIndex();
 }
 
 function dragEnter() {

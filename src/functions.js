@@ -30,3 +30,9 @@ export function removeDone(list) {
   updateIndex(list);
   saveLocal(list);
 }
+
+export function removeThis(task, list) {
+  list = list.filter((el) => el !== task);
+  updateIndex(list);
+  saveLocal(list);
+}

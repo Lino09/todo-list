@@ -3,9 +3,6 @@ import addEvents from './dragNDrop.js'; // eslint-disable-line
 import './style.css';
 
 let list = [
-  { description: 'Add Your tasks', isCompleted: false, index: 0 },
-  { description: 'Edit a Task', isCompleted: false, index: 1 },
-  { description: 'Drag to reorder', isCompleted: false, index: 2 },
 ];
 
 function listIt() {
@@ -20,6 +17,15 @@ function listIt() {
     if (item.isCompleted) {
       taskElement.classList.add('completed');
     }
+    const delBtn = document.createElement('button');
+    const delIcon = document.createElement('i');
+    delIcon.classList = 'far fa-trash-alt icon del';
+    delBtn.appendChild(delIcon);
+    delBtn.classList.add('del-container');
+    delBtn.addEventListener('click', () => {
+      task.removeThis(item, list);
+      listIt();
+    });
     const checker = document.createElement('input');
     checker.type = 'checkbox';
     checker.classList.add('task-check');
@@ -28,7 +34,6 @@ function listIt() {
       listIt();
     });
     checker.checked = item.isCompleted;
-    taskElement.appendChild(checker);
     const taskText = document.createElement('input');
     taskText.classList = 'task-text';
     taskText.value = item.description;
@@ -38,13 +43,16 @@ function listIt() {
         task.saveLocal(list);
       }
     });
-    taskElement.appendChild(taskText);
     const dragIcon = document.createElement('i');
     dragIcon.classList = 'fas fa-ellipsis-v drag icon';
+    taskElement.appendChild(delBtn);
+    taskElement.appendChild(checker);
+    taskElement.appendChild(taskText);
     taskElement.appendChild(dragIcon);
     taskElement.draggable = 'true';
     document.querySelector('.list').appendChild(taskElement);
   });
+  document.querySelector('.input-task').focus();
   addEvents(list);
 }
 
