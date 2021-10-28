@@ -1,5 +1,7 @@
 import * as task from './functions.js';
+import { addEvents } from './dragNDrop.js';
 import './style.css';
+
 
 let list = [
   { description: 'Wash the dishes', isCompleted: false, index: 0 },
@@ -7,7 +9,7 @@ let list = [
   { description: 'Learn something new', isCompleted: false, index: 2 },
 ];
 
-function listIt() {
+export function listIt() {
   if (window.localStorage.getItem('todos')) {
     const todos = window.localStorage.getItem('todos');
     list = JSON.parse(todos);
@@ -15,7 +17,7 @@ function listIt() {
   document.querySelector('.list').innerHTML = '';
   list.forEach((item) => {
     const taskElement = document.createElement('li');
-    taskElement.classList.add('task');
+    taskElement.classList.add('task', 'draggable');
     if (item.isCompleted) {
       taskElement.classList.add('completed');
     }
@@ -44,6 +46,7 @@ function listIt() {
     taskElement.draggable = 'true';
     document.querySelector('.list').appendChild(taskElement);
   });
+  addEvents(list);
 }
 
 listIt();
