@@ -26,8 +26,11 @@ button {
 }
 
 .clearer {
-  padding: 8px;
+  padding: 16px;
   cursor: pointer;
+}
+.clearer:hover {
+  text-decoration: underline;
 }
 
 .icon {
@@ -86,6 +89,7 @@ button {
   box-sizing: border-box;
   width: 80%;
   margin: 0;
+  border: 2px solid transparent;
 }
 
 .input-task:focus {

@@ -45,6 +45,7 @@ function listIt() {
     taskElement.draggable = 'true';
     document.querySelector('.list').appendChild(taskElement);
   });
+  document.querySelector('.input-task').focus();
   addEvents(list);
 }
 
