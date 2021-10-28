@@ -29,6 +29,7 @@ button {
   padding: 16px;
   cursor: pointer;
 }
+
 .clearer:hover {
   text-decoration: underline;
 }
@@ -85,7 +86,6 @@ button {
 .input-task {
   background-color: white;
   padding: 16px 12px;
-  border: none;
   box-sizing: border-box;
   width: 80%;
   margin: 0;
