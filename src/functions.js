@@ -1,6 +1,5 @@
-export function saveLocal(list) {
-  window.localStorage.setItem('todos', JSON.stringify(list));
-}
+// import saveLocal from './localLogic'
+const saveLocal = require('./localLogic')
 
 export function toggle(el, list) {
   list.forEach((task) => {
@@ -14,7 +13,8 @@ export function toggle(el, list) {
 export function add(list) {
   list.push({ description: document.querySelector('#newTask').value, isCompleted: false, index: list.length });
   document.querySelector('#newTask').value = '';
-  saveLocal(list);
+  
+ return {length: list.length, local: saveLocal(list)}
 }
 
 export function updateIndex(list) {
@@ -29,10 +29,13 @@ export function removeDone(list) {
   list = list.filter((el) => el.isCompleted === false);
   updateIndex(list);
   saveLocal(list);
+  return list
 }
 
 export function removeThis(task, list) {
-  list = list.filter((el) => el !== task);
+  list = list.filter((el) => el.index !== task.index);
   updateIndex(list);
   saveLocal(list);
+  return {length: list.length, local: saveLocal(list)}
 }
+
