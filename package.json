@@ -21,7 +21,11 @@
   "homepage": "https://github.com/Lino09/webpack-first#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "babel-eslint": "^10.1.0",
     "css-loader": "^6.5.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.3.1",
     "style-loader": "^3.3.1",

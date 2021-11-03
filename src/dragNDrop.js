@@ -1,4 +1,4 @@
-import * as task from './functions.js';
+import * as task from './functions';
 import listIt from './index.js'; // eslint-disable-line
 
 let dragStartIndex;

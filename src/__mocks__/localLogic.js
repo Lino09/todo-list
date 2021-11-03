@@ -1,6 +1,6 @@
-
+/* eslint-disable linebreak-style */
 function saveLocal(list) {
-  let local = list;
-  return local
+  const local = list;
+  return local;
 }
 module.exports = saveLocal;
