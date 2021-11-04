@@ -1,5 +1,6 @@
 import * as task from './functions';
-import listIt from './index.js'; // eslint-disable-line
+import listIt from './index'; // eslint-disable-line
+import { saveLocal } from './localLogic';
 
 let dragStartIndex;
 
@@ -8,7 +9,7 @@ function swapItems(startIndex, endIndex, list) {
   const itemTwo = list[endIndex];
   list[startIndex] = itemTwo;
   list[endIndex] = itemOne;
-  task.saveLocal(list);
+  saveLocal(list);
   listIt();
 }
 

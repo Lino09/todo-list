@@ -2,8 +2,7 @@ import * as task from './functions';
 import addEvents from './dragNDrop'; // eslint-disable-line
 import './style.css';
 
-let list = [
-];
+let list = [];
 
 function listIt() {
   if (window.localStorage.getItem('todos')) {
@@ -38,10 +37,7 @@ function listIt() {
     taskText.classList = 'task-text';
     taskText.value = item.description;
     taskText.addEventListener('change', () => {
-      if (taskText.value.length > 0) {
-        item.description = taskText.value;
-        task.saveLocal(list);
-      }
+      task.editDescription({ taskText, item, list });
     });
     const dragIcon = document.createElement('i');
     dragIcon.classList = 'fas fa-ellipsis-v drag icon';

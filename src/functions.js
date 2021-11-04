@@ -1,21 +1,4 @@
-// import saveLocal from './localLogic'
 const saveLocal = require('./localLogic');
-
-export function toggle(el, list) {
-  list.forEach((task) => {
-    if (task === el) {
-      task.isCompleted = !task.isCompleted;
-    }
-  });
-  saveLocal(list);
-}
-
-export function add(list) {
-  list.push({ description: document.querySelector('#newTask').value, isCompleted: false, index: list.length });
-  document.querySelector('#newTask').value = '';
-
-  return { length: list.length, local: saveLocal(list) };
-}
 
 export function updateIndex(list) {
   let i = 0;
@@ -23,13 +6,36 @@ export function updateIndex(list) {
     el.index = i;
     i += 1;
   });
+  return list;
 }
 
-export function removeDone(list) {
-  list = list.filter((el) => el.isCompleted === false);
-  updateIndex(list);
+export function toggle(el, list) {
+  list.forEach((task) => {
+    if (task.index === el.index) {
+      task.isCompleted = !task.isCompleted;
+    }
+  });
   saveLocal(list);
   return list;
+}
+
+export function editDescription({ taskText, item, list }) {
+  if (taskText.value.length > 0) {
+    item.description = taskText.value;
+    saveLocal(list);
+    return item;
+  }
+  return item;
+}
+
+export function add(list) {
+  list.push({
+    description: document.querySelector('#newTask').value,
+    isCompleted: false,
+    index: list.length,
+  });
+  document.querySelector('#newTask').value = '';
+  return { length: list.length, local: saveLocal(list) };
 }
 
 export function removeThis(task, list) {
@@ -37,4 +43,11 @@ export function removeThis(task, list) {
   updateIndex(list);
   saveLocal(list);
   return { length: list.length, local: saveLocal(list) };
+}
+
+export function removeDone(list) {
+  list = list.filter((el) => el.isCompleted === false);
+  updateIndex(list);
+  saveLocal(list);
+  return list;
 }
