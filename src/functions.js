@@ -1,6 +1,15 @@
 // import saveLocal from './localLogic'
 const saveLocal = require('./localLogic');
 
+export function updateIndex(list) {
+  let i = 0;
+  list.forEach((el) => {
+    el.index = i;
+    i += 1;
+  });
+  return list;
+}
+
 export function toggle(el, list) {
   list.forEach((task) => {
     if (task.index === el.index) {
@@ -17,6 +26,7 @@ export function editDescription({ taskText, item, list }) {
     saveLocal(list);
     return item;
   }
+  return item;
 }
 
 export function add(list) {
@@ -42,12 +52,4 @@ export function removeDone(list) {
   updateIndex(list);
   saveLocal(list);
   return list;
-}
-
-export function updateIndex(list) {
-  let i = 0;
-  list.forEach((el) => {
-    el.index = i;
-    i += 1;
-  });
 }
