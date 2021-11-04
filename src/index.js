@@ -1,9 +1,9 @@
 import * as task from './functions.js';
 import addEvents from './dragNDrop.js'; // eslint-disable-line
+import { saveLocal } from './localLogic.js';
 import './style.css';
 
-let list = [
-];
+let list = [];
 
 function listIt() {
   if (window.localStorage.getItem('todos')) {
@@ -38,14 +38,11 @@ function listIt() {
     taskText.classList = 'task-text';
     taskText.value = item.description;
     taskText.addEventListener('change', () => {
-      if (taskText.value.length > 0) {
-        item.description = taskText.value;
-        task.saveLocal(list);
-      }
+      task.editDescription({ taskText: taskText, item: item, list: list });
     });
     const dragIcon = document.createElement('i');
     dragIcon.classList = 'fas fa-ellipsis-v drag icon';
-    taskElement.append(delBtn,checker,taskText,dragIcon);
+    taskElement.append(delBtn, checker, taskText, dragIcon);
     taskElement.draggable = 'true';
     document.querySelector('.list').appendChild(taskElement);
   });
