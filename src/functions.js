@@ -1,5 +1,5 @@
-// import saveLocal from './localLogic'
 const saveLocal = require('./localLogic');
+
 export function updateIndex(list) {
   let i = 0;
   list.forEach((el) => {
