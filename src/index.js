@@ -1,5 +1,5 @@
-import * as task from './functions.js';
-import addEvents from './dragNDrop.js'; // eslint-disable-line
+import * as task from './functions';
+import addEvents from './dragNDrop'; // eslint-disable-line
 import './style.css';
 
 let list = [
@@ -45,10 +45,7 @@ function listIt() {
     });
     const dragIcon = document.createElement('i');
     dragIcon.classList = 'fas fa-ellipsis-v drag icon';
-    taskElement.appendChild(delBtn);
-    taskElement.appendChild(checker);
-    taskElement.appendChild(taskText);
-    taskElement.appendChild(dragIcon);
+    taskElement.append(delBtn, checker, taskText, dragIcon);
     taskElement.draggable = 'true';
     document.querySelector('.list').appendChild(taskElement);
   });

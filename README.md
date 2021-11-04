@@ -16,7 +16,6 @@ Additional description about the project and its features.
 
 [Live Demo Link](https://lino09.github.io/todo-list/)
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -28,13 +27,16 @@ To get a local copy up and running follow these simple example steps.
 ### Run the following commands
 
 > cd todo-list <br>
- npm install <br>
- npm run build <br>
- npm run start
+> `npm install` <br> 
+> `npm run build` <br>
+> `npm run start`
 
 ### It will run in your http://localhost:8080/
 
+### Tests
 
+run `npm install` if you didn't in previous section <br>
+run `npm test`
 
 ## Authors
 
@@ -43,7 +45,10 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@Lino09](https://github.com/Lino09)
 - Twitter: [@AbelHerreaZam1](https://twitter.com/AbelHerreaZam1)
 
+👤 **Amr Ahmed**
 
+- GitHub: [@Amrhub](https://github.com/Amrhub/)
+- LinkedIn: [Amr Ahmed](https://www.linkedin.com/in/amr-ahmed-655420191/)
 
 ## 🤝 Contributing
 

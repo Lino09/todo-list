@@ -1,4 +1,4 @@
-import * as task from './functions.js';
+import * as task from './functions';
 import listIt from './index.js'; // eslint-disable-line
 
 let dragStartIndex;
@@ -24,7 +24,7 @@ function drop(draggable, index, list) {
   const dragEndIndex = index;
   swapItems(dragStartIndex, dragEndIndex, list);
   draggable.classList.remove('over');
-  task.updateIndex();
+  task.updateIndex(list);
 }
 
 function dragEnter() {
