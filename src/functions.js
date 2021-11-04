@@ -1,6 +1,5 @@
 // import saveLocal from './localLogic'
 const saveLocal = require('./localLogic');
-
 export function updateIndex(list) {
   let i = 0;
   list.forEach((el) => {
@@ -36,7 +35,6 @@ export function add(list) {
     index: list.length,
   });
   document.querySelector('#newTask').value = '';
-
   return { length: list.length, local: saveLocal(list) };
 }
 
